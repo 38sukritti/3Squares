@@ -1,0 +1,100 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}About Us – 3Squares Interior Design{% endblock %}
+{% block description %}Learn about 3Squares – a premium interior design and fit-out company crafting extraordinary corporate environments.{% endblock %}
+
+{% block content %}
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="container">
+            <h1 class="title animate-on-scroll slide-up staggered">About Us</h1>
+            <p class="description animate-on-scroll slide-up staggered">A luxury interior design and fit-out company dedicated to transforming corporate spaces into extraordinary environments.</p>
+        </div>
+    </div>
+
+    <main class="page-wrapper" style="padding-top:0;">
+        <!-- About Section -->
+        <section class="page-section">
+            <div class="drafting-detail detail-top-right">COORD: 25.2048° N<br>SCALE: 1:50 [DRAFT]</div>
+            <div class="container" style="display:flex; align-items:center; gap:6rem; flex-wrap:wrap;">
+                <div class="text-content animate-on-scroll fade-in-right" style="flex:1; min-width:280px;">
+                    <h2 class="subtitle">About Us</h2>
+                    <h2 class="title">
+                        <span class="split-line"><span>Crafting Excellence</span></span>
+                        <span class="split-line"><span>Since Day One.</span></span>
+                    </h2>
+                    <p class="description">
+                        We are a luxury interior design and fit-out company dedicated to transforming spaces into extraordinary environments. Our approach combines cutting-edge design thinking with meticulous execution. Every project is a testament to our commitment to excellence, innovation, and the art of creating spaces that inspire and perform.
+                    </p>
+                    <p class="description" style="font-size:1.1rem;">
+                        From corporate offices and boardrooms to coffee shops, kitchens, event booths, and custom furniture — 3Squares delivers end-to-end solutions that elevate your brand and delight your clients.
+                    </p>
+                    <a href="{% url 'contact' %}"><button class="cta-button magnetic-btn mt-2">Work With Us</button></a>
+                </div>
+                <div class="image-content animate-on-scroll fade-in-left parallax-wrap" style="flex:1; min-width:280px;">
+                    <div class="image-wrapper parallax-el" style="height:650px; border-radius:12px; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,0.15);">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80" alt="Modern Corporate Office Interior" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="page-section" style="background:rgba(10,44,28,0.03);">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="subtitle animate-on-scroll slide-up">Our Foundation</h2>
+                    <h2 class="title animate-on-scroll slide-up staggered">Values that drive<br>every project.</h2>
+                </div>
+                <div class="core-values mt-4">
+                    <div class="value-item animate-on-scroll scale-in staggered hover-glowing">
+                        <div class="bracket-frame bracket-tl"></div>
+                        <div class="bracket-frame bracket-br"></div>
+                        <div class="drafting-detail" style="bottom:5px;right:10px;font-size:0.5rem;">TYPE: A_01</div>
+                        <h3>Excellence</h3>
+                        <p>Uncompromising quality in every detail, from initial client concept to final delivery and completion.</p>
+                    </div>
+                    <div class="value-item animate-on-scroll scale-in staggered hover-glowing">
+                        <div class="bracket-frame bracket-tl"></div>
+                        <div class="bracket-frame bracket-br"></div>
+                        <div class="drafting-detail" style="bottom:5px;right:10px;font-size:0.5rem;">TYPE: A_02</div>
+                        <h3>Innovation</h3>
+                        <p>Pushing boundaries with creative design solutions and cutting-edge techniques tailored to modern workplaces.</p>
+                    </div>
+                    <div class="value-item animate-on-scroll scale-in staggered hover-glowing">
+                        <div class="bracket-frame bracket-tl"></div>
+                        <div class="bracket-frame bracket-br"></div>
+                        <div class="drafting-detail" style="bottom:5px;right:10px;font-size:0.5rem;">TYPE: A_03</div>
+                        <h3>Performance</h3>
+                        <p>Creating spaces that not only look stunning but function flawlessly in every real-world use case.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="page-section">
+            <div class="container">
+                <div class="stats-container" style="border-top:1px solid rgba(0,0,0,0.1); padding-top:4rem; max-width:900px; margin:0 auto;">
+                    <div class="stat-box animate-on-scroll pop-up staggered">
+                        <h2 class="stat-number count-up" data-target="250">0</h2>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stat-box animate-on-scroll pop-up staggered">
+                        <h2 class="stat-number count-up" data-target="180">0</h2>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat-box animate-on-scroll pop-up staggered">
+                        <h2 class="stat-number count-up" data-target="15">0</h2>
+                        <p>Cities Covered</p>
+                    </div>
+                    <div class="stat-box animate-on-scroll pop-up staggered">
+                        <h2 class="stat-number count-up" data-target="8">0</h2>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

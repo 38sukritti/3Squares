@@ -1,0 +1,317 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Home – 3Squares Interior Design{% endblock %}
+{% block description %}3Squares – Premium interior design and fit-out services for corporate spaces, coffee shops, kitchens, booths, and more.{% endblock %}
+
+{% block extra_head %}
+    <style>
+        /* ===== FULL-WIDTH HERO ===== */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .hero-banner-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+        .hero-banner-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.08);
+        }
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0) scale(1.02); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10,44,28,0.6) 0%, rgba(10,44,28,0.85) 100%);
+            z-index: 1;
+        }
+        .hero-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+        }
+        .hero-content .subtitle {
+            background: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.9);
+        }
+        .hero-content .title {
+            color: #ffffff;
+            font-size: 5.5rem;
+            margin-bottom: 2rem;
+        }
+        .hero-content .description {
+            color: rgba(255,255,255,0.85);
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.3rem;
+        }
+        .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .hero-buttons .cta-button { font-size: 1rem; padding: 1rem 2.5rem; }
+        .hero-buttons .cta-button.white { background: #fff; color: var(--accent-green); border-color: #fff; }
+        .hero-buttons .cta-button.white-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
+        .hero-buttons .cta-button.white-outline:hover { background: #fff; color: var(--accent-green); border-color: #fff; }
+
+        /* Stats strip */
+        .stats-strip {
+            background: var(--accent-green);
+            padding: 4rem 0;
+        }
+        .stats-strip .stats-inner {
+            display: flex;
+            justify-content: center;
+            gap: 6rem;
+            flex-wrap: wrap;
+        }
+        .stats-strip .stat-box { text-align: center; }
+        .stats-strip .stat-number { color: #ffffff; }
+        .stats-strip .stat-box p { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
+
+        /* Showcase Gallery */
+        .showcase-strip { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem; }
+        .showcase-item { border-radius: 14px; overflow: hidden; position: relative; cursor: none; }
+        .showcase-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .showcase-item:hover img { transform: scale(1.08); }
+        .showcase-item.tall { height: 450px; }
+        .showcase-item.short { height: 215px; }
+        .showcase-label { position: absolute; bottom: 14px; left: 14px; background: rgba(10,44,28,0.85); color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; backdrop-filter: blur(8px); }
+
+        /* Featured Banner */
+        .featured-banner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.12); min-height: 400px; }
+        .featured-banner-img { overflow: hidden; }
+        .featured-banner-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .featured-banner:hover .featured-banner-img img { transform: scale(1.05); }
+        .featured-banner-content { background: var(--accent-green); color: white; padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
+        .featured-banner-content .subtitle { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+        .featured-banner-content h2 { font-family: var(--font-serif); font-size: 2.5rem; line-height: 1.2; margin-bottom: 1.5rem; color: white; }
+        .featured-banner-content p { color: rgba(255,255,255,0.8); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem; }
+        .featured-banner-content .cta-button { background: #fff; color: var(--accent-green); border-color: #fff; align-self: flex-start; }
+
+        /* Scroll indicator */
+        .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; }
+        .scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,0.3); position: relative; overflow: hidden; }
+        .scroll-line::after { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: white; animation: scrollDown 1.5s ease-in-out infinite; }
+        @keyframes scrollDown { 0% { top: -100%; } 50% { top: 0; } 100% { top: 100%; } }
+
+        /* Initial Header Override */
+        .header.glass-header {
+            background: rgba(255,255,255,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .header.glass-header .nav-links a { color: rgba(255,255,255,0.8); }
+        .header.glass-header .nav-links a.active { color: #fff; }
+        .header.glass-header .logo-title { color: #fff; }
+        .header.glass-header .logo-subtitle { color: rgba(255,255,255,0.7); }
+        .header.glass-header .logo-icon rect { stroke: #ffffff; }
+
+        @media (max-width: 968px) {
+            .hero-content .title { font-size: 3rem; }
+            .stats-strip .stats-inner { gap: 3rem; }
+            .showcase-strip { grid-template-columns: 1fr; }
+            .showcase-item.tall, .showcase-item.short { height: 280px; }
+            .featured-banner { grid-template-columns: 1fr; }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- ===== FULL-WIDTH HERO WITH ANIMATED IMAGE ===== -->
+    <section class="hero-banner">
+        <div class="hero-banner-img">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80" alt="Premium Corporate Office Interior">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="subtitle animate-on-scroll slide-up">Premium Corporate Fitouts</h2>
+            <h1 class="title animate-on-scroll slide-up staggered">We Design Spaces<br>That Perform.</h1>
+            <p class="description animate-on-scroll slide-up staggered">
+                Transforming corporate environments into extraordinary experiences through innovative design, precision execution, and unparalleled craftsmanship.
+            </p>
+            <div class="hero-buttons animate-on-scroll slide-up staggered">
+                <a href="{% url 'portfolio' %}"><button class="cta-button white magnetic-btn">Explore Our Work</button></a>
+                <a href="{% url 'contact' %}"><button class="cta-button white-outline magnetic-btn">Get In Touch</button></a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- ===== STATS STRIP ===== -->
+    <section class="stats-strip">
+        <div class="container">
+            <div class="stats-inner">
+                <div class="stat-box animate-on-scroll pop-up staggered">
+                    <h2 class="stat-number count-up" data-target="250">0</h2>
+                    <p>Projects Delivered</p>
+                </div>
+                <div class="stat-box animate-on-scroll pop-up staggered">
+                    <h2 class="stat-number count-up" data-target="180">0</h2>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-box animate-on-scroll pop-up staggered">
+                    <h2 class="stat-number count-up" data-target="15">0</h2>
+                    <p>Cities Covered</p>
+                </div>
+                <div class="stat-box animate-on-scroll pop-up staggered">
+                    <h2 class="stat-number count-up" data-target="8">0</h2>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main style="position:relative; z-index:1;">
+        <!-- ===== IMAGE SHOWCASE GALLERY ===== -->
+        <section class="page-section" style="padding-top:60px; padding-bottom:30px;">
+            <div class="container">
+                <div class="section-header text-center mb-4">
+                    <h2 class="subtitle animate-on-scroll slide-up">Recent Projects</h2>
+                    <h2 class="title animate-on-scroll slide-up staggered" style="font-size:3.5rem;">Spaces we've<br>transformed.</h2>
+                </div>
+                <div class="showcase-strip">
+                    <div class="showcase-item tall animate-on-scroll scale-in staggered hover-glowing">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Coffee Shop Interior">
+                        <div class="showcase-label">Coffee Shop Design</div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                        <div class="showcase-item short animate-on-scroll scale-in staggered hover-glowing">
+                            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=80" alt="Meeting Room">
+                            <div class="showcase-label">Meeting Room</div>
+                        </div>
+                        <div class="showcase-item short animate-on-scroll scale-in staggered hover-glowing">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=80" alt="Kitchen Fitout">
+                            <div class="showcase-label">Kitchen Fitout</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                        <div class="showcase-item short animate-on-scroll scale-in staggered hover-glowing">
+                            <img src="{% static 'main/images/ChatGPT Image Apr 7, 2026, 02_59_52 PM.png' %}" alt="Event Booth">
+                            <div class="showcase-label">Event Booth</div>
+                        </div>
+                        <div class="showcase-item short animate-on-scroll scale-in staggered hover-glowing">
+                            <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80" alt="Custom Furniture">
+                            <div class="showcase-label">Custom Furniture</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURED BANNER ===== -->
+        <section class="page-section" style="padding-top:30px;">
+            <div class="container">
+                <div class="featured-banner animate-on-scroll scale-in">
+                    <div class="featured-banner-img">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80" alt="Featured Corporate Project">
+                    </div>
+                    <div class="featured-banner-content">
+                        <h2 class="subtitle">Featured</h2>
+                        <h2>Transforming the modern workplace experience.</h2>
+                        <p>From concept to completion — we deliver end-to-end corporate fitouts, commercial kitchens, coffee shops, booths, and bespoke furniture solutions across the UAE and beyond.</p>
+                        <a href="{% url 'portfolio' %}"><button class="cta-button magnetic-btn">View Our Portfolio</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES PREVIEW ===== -->
+        <section class="page-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="subtitle animate-on-scroll slide-up">What We Offer</h2>
+                    <h2 class="title animate-on-scroll slide-up staggered" style="font-size:3.5rem;">Corporate spaces,<br>crafted to impress.</h2>
+                </div>
+                <div class="grid-3col mt-4">
+                    <div class="service-card animate-on-scroll slide-up staggered tilt-effect hover-glowing">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Corporate Fitouts">
+                        </div>
+                        <div class="service-info glass-card">
+                            <h3>CORPORATE</h3>
+                            <p>Premium Fitouts</p>
+                            <a href="{% url 'services' %}" class="view-details magnetic-btn">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="service-card animate-on-scroll slide-up staggered tilt-effect hover-glowing">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Coffee Shops">
+                        </div>
+                        <div class="service-info glass-card">
+                            <h3>HOSPITALITY</h3>
+                            <p>Coffee Shops & Kitchens</p>
+                            <a href="{% url 'services' %}" class="view-details magnetic-btn">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="service-card animate-on-scroll slide-up staggered tilt-effect hover-glowing">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80" alt="Furniture">
+                        </div>
+                        <div class="service-info glass-card">
+                            <h3>FURNITURE</h3>
+                            <p>Booths & Meeting Areas</p>
+                            <a href="{% url 'services' %}" class="view-details magnetic-btn">View Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4 mb-3">
+                    <a href="{% url 'services' %}"><button class="cta-button outline magnetic-btn">View All Services</button></a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        // Header goes transparent on hero, then solid on scroll
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255,255,255,0.9)';
+                header.style.borderBottom = '1px solid rgba(0,0,0,0.08)';
+                header.querySelectorAll('.nav-links a').forEach(a => { 
+                    a.style.color = ''; 
+                    if (a.classList.contains('active')) a.style.color = 'var(--accent-green)';
+                });
+                header.querySelector('.logo-title').style.color = '';
+                header.querySelector('.logo-subtitle').style.color = '';
+                header.querySelectorAll('.logo-icon rect').forEach(r => { r.setAttribute('stroke', '#0a2c1c'); });
+            } else {
+                header.style.background = 'rgba(255,255,255,0.15)';
+                header.style.borderBottom = '1px solid rgba(255,255,255,0.2)';
+                header.querySelectorAll('.nav-links a').forEach(a => {
+                    a.style.color = a.classList.contains('active') ? '#fff' : 'rgba(255,255,255,0.8)';
+                });
+                header.querySelector('.logo-title').style.color = '#fff';
+                header.querySelector('.logo-subtitle').style.color = 'rgba(255,255,255,0.7)';
+                header.querySelectorAll('.logo-icon rect').forEach(r => { r.setAttribute('stroke', '#ffffff'); });
+            }
+        });
+    </script>
+{% endblock %}

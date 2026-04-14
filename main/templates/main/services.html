@@ -1,0 +1,132 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Services – 3Squares Interior Design{% endblock %}
+{% block description %}3Squares services: Corporate Fitouts, Coffee Shops, Kitchens, Booths, Meeting Areas, and Custom Furniture – no residential projects.{% endblock %}
+
+{% block extra_head %}
+    <style>
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+        .service-full-card { border-radius: 16px; overflow: hidden; position: relative; background: rgba(255,255,255,0.4); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 8px 32px rgba(0,0,0,0.06); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .service-full-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(10,44,28,0.15); }
+        .service-full-card .card-img { height: 260px; overflow: hidden; }
+        .service-full-card .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .service-full-card:hover .card-img img { transform: scale(1.08); }
+        .service-full-card .card-body { padding: 2rem; }
+        .service-full-card .card-tag { font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; color: var(--accent-green); text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        .service-full-card .card-title { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-primary); }
+        .service-full-card .card-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; }
+        @media (max-width: 968px) { .services-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1200px) and (min-width: 969px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="container">
+            <h2 class="subtitle animate-on-scroll slide-up">Our Expertise</h2>
+            <h1 class="title animate-on-scroll slide-up staggered">Services &amp; Products</h1>
+            <p class="description animate-on-scroll slide-up staggered">Corporate fitouts, coffee shops, kitchens, booths, meeting areas &amp; furniture — built for business, not houses.</p>
+        </div>
+    </div>
+
+    <main class="page-wrapper" style="padding-top:0;">
+        <section class="page-section">
+            <div class="container">
+                <div class="services-grid">
+
+                    <!-- Corporate Fitouts -->
+                    <div class="service-full-card animate-on-scroll scale-in staggered">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Corporate Fitouts">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">Corporate</span>
+                            <h3 class="card-title">Corporate Fitouts</h3>
+                            <p class="card-desc">End-to-end office fitout solutions — from open-plan workspaces to executive suites. We design environments that reflect your brand and maximize productivity.</p>
+                        </div>
+                    </div>
+
+                    <!-- Projects -->
+                    <div class="service-full-card animate-on-scroll scale-in staggered">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Projects">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">Projects</span>
+                            <h3 class="card-title">Commercial Projects</h3>
+                            <p class="card-desc">Large-scale commercial developments requiring comprehensive design, planning, and execution. We manage the full project lifecycle with precision.</p>
+                        </div>
+                    </div>
+
+                    <!-- Coffee Shops -->
+                    <div class="service-full-card animate-on-scroll scale-in staggered">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Coffee Shops">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">Hospitality</span>
+                            <h3 class="card-title">Coffee Shops</h3>
+                            <p class="card-desc">Warm, inviting café concepts that attract customers and create memorable experiences. Custom counters, seating, lighting — all designed to elevate your brand.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kitchens -->
+                    <div class="service-full-card animate-on-scroll scale-in staggered">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80" alt="Commercial Kitchens">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">Commercial</span>
+                            <h3 class="card-title">Commercial Kitchens</h3>
+                            <p class="card-desc">Efficient, ergonomic kitchen designs for restaurants, cafés, and corporate dining. Built for high performance with premium materials and smart layouts.</p>
+                        </div>
+                    </div>
+
+                    <!-- Booths -->
+                    <div class="service-full-card animate-on-scroll scale-in staggered">
+                        <div class="card-img">
+                            <img src="{% static 'main/images/ChatGPT Image Apr 7, 2026, 02_59_52 PM.png' %}" alt="Booths">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">Exhibition</span>
+                            <h3 class="card-title">Event Booths</h3>
+                            <p class="card-desc">Eye-catching exhibition and event booths that command attention on the show floor. Custom-built structures that embody your brand with impact.</p>
+                        </div>
+                    </div>
+
+                    <!-- Meeting Areas -->
+                    <div class="service-full-card animate-on-scroll scale-in staggered">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80" alt="Meeting Areas">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">Corporate</span>
+                            <h3 class="card-title">Meeting &amp; Conf. Areas</h3>
+                            <p class="card-desc">Sophisticated boardrooms and collaborative meeting spaces designed for productivity, modern technology integration, and professional impressions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Furniture -->
+                    <div class="service-full-card animate-on-scroll scale-in staggered" style="grid-column: span 1;">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80" alt="Furniture">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">Furniture</span>
+                            <h3 class="card-title">Custom Furniture</h3>
+                            <p class="card-desc">Bespoke furniture pieces crafted to complement your space — from reception desks and custom shelving to statement lounge seating and acoustic panels.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-5">
+                    <p class="text-muted mb-3" style="font-size:1.1rem;">Ready to transform your space? Let's talk about your project.</p>
+                    <a href="{% url 'contact' %}"><button class="cta-button magnetic-btn">Start Your Project</button></a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

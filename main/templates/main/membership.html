@@ -1,0 +1,89 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Membership – 3Squares Interior Design{% endblock %}
+{% block description %}Choose a 3Squares membership plan tailored to your project scale – Basic, Premium, or Elite.{% endblock %}
+
+{% block content %}
+    <div class="page-hero">
+        <div class="container">
+            <h2 class="subtitle animate-on-scroll slide-up">Elevate Your Experience</h2>
+            <h1 class="title animate-on-scroll slide-up staggered">Choose a plan that fits<br>your vision &amp; scale.</h1>
+            <p class="description animate-on-scroll slide-up staggered">Transparent pricing. Exceptional delivery. No surprises.</p>
+        </div>
+    </div>
+
+    <main class="page-wrapper" style="padding-top:0;">
+        <section class="page-section">
+            <div class="container">
+                <div class="pricing-grid mt-2">
+                    <!-- Basic -->
+                    <div class="pricing-card glass-card hover-glowing animate-on-scroll slide-up staggered">
+                        <h3>Basic Plan</h3>
+                        <div class="price">$499<span>/mo</span></div>
+                        <p class="plan-desc">Start your design journey.</p>
+                        <ul class="plan-features">
+                            <li>Design Consultation</li>
+                            <li>Basic Floor Plans</li>
+                            <li>1 Revision Round</li>
+                            <li>Standard Timeline</li>
+                        </ul>
+                        <a href="{% url 'contact' %}"><button class="cta-button outline magnetic-btn w-100">Select Plan</button></a>
+                    </div>
+                    <!-- Premium -->
+                    <div class="pricing-card featured glass-card-strong hover-glowing animate-on-scroll slide-up staggered">
+                        <div class="badge pulse-anim">Most Popular</div>
+                        <h3>Premium Plan</h3>
+                        <div class="price">$1,499<span>/mo</span></div>
+                        <p class="plan-desc">For businesses ready to make an impact.</p>
+                        <ul class="plan-features">
+                            <li>Full Interior Design</li>
+                            <li>3D Renderings</li>
+                            <li>Priority Execution</li>
+                            <li>3 Revision Rounds</li>
+                            <li>Project Manager Assigned</li>
+                        </ul>
+                        <a href="{% url 'contact' %}"><button class="cta-button magnetic-btn w-100">Select Plan</button></a>
+                    </div>
+                    <!-- Elite -->
+                    <div class="pricing-card glass-card hover-glowing animate-on-scroll slide-up staggered">
+                        <h3>Elite Plan</h3>
+                        <div class="price">$3,999<span>/mo</span></div>
+                        <p class="plan-desc">Comprehensive solution for large-scale projects.</p>
+                        <ul class="plan-features">
+                            <li>End-to-end Project Management</li>
+                            <li>Unlimited 3D Renderings</li>
+                            <li>Dedicated Senior Designer</li>
+                            <li>Unlimited Revisions</li>
+                            <li>On-site Supervision</li>
+                            <li>Post-completion Support</li>
+                        </ul>
+                        <a href="{% url 'contact' %}"><button class="cta-button outline magnetic-btn w-100">Select Plan</button></a>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="mt-5 mx-auto" style="max-width:800px;">
+                    <h2 class="title text-center mb-5 animate-on-scroll slide-up">Frequently Asked Questions</h2>
+
+                    <div class="faq-item glass-card animate-on-scroll fade-in-right staggered">
+                        <h4>Can I upgrade my membership?</h4>
+                        <p>Yes, you can upgrade at any time. The difference will be prorated for the remaining period.</p>
+                    </div>
+                    <div class="faq-item glass-card animate-on-scroll fade-in-left staggered">
+                        <h4>What's included in priority execution?</h4>
+                        <p>Premium and Elite members get their projects prioritized in our queue, with 30–50% faster delivery times.</p>
+                    </div>
+                    <div class="faq-item glass-card animate-on-scroll fade-in-right staggered">
+                        <h4>Do you work on residential projects?</h4>
+                        <p>No — 3Squares specialises exclusively in corporate and commercial spaces. We do not take residential or home projects.</p>
+                    </div>
+                    <div class="faq-item glass-card animate-on-scroll fade-in-left staggered">
+                        <h4>Is there a refund policy?</h4>
+                        <p>We offer a 30-day satisfaction guarantee for all membership tiers. If you're not satisfied, we'll provide a full refund or redo the work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

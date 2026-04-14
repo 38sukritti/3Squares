@@ -1,0 +1,120 @@
+/* 3Squares Admin Custom Styling */
+
+:root {
+    --primary: #0a2c1c;
+    --primary-fg: #ffffff;
+    --header-bg: #0a2c1c;
+    --header-color: #ffffff;
+    --header-link-color: rgba(255, 255, 255, 0.8);
+    --breadcrumbs-fg: #0a2c1c;
+    --link-color: #0a2c1c;
+    --link-hover-color: #1a4d2e;
+    --button-bg: #0a2c1c;
+    --button-hover-bg: #1a4d2e;
+    --default-button-bg: #f8f9fa;
+    --default-button-hover-bg: #e9ecef;
+    --body-bg: #f4f7f6;
+}
+
+/* Header Styling */
+#header {
+    background: var(--header-bg);
+    color: var(--header-color);
+    padding: 15px 40px;
+    height: auto;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+#header a:link, #header a:visited {
+    color: var(--header-link-color);
+}
+
+#header a:hover {
+    color: #fff;
+}
+
+#branding h1 {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    background: #fff;
+    padding: 10px 40px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    color: var(--breadcrumbs-fg);
+}
+
+.breadcrumbs a {
+    color: var(--link-color);
+    font-weight: 500;
+}
+
+/* Content Area */
+#content {
+    padding: 40px;
+}
+
+.module {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+/* Table Styling */
+table thead th {
+    background: #f8f9fa !important;
+    padding: 12px 15px !important;
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+table tbody tr:hover {
+    background-color: #f1f8f4 !important;
+}
+
+/* Buttons */
+.button, input[type=submit], input[type=button], .submit-row button, .submit-row input {
+    background: var(--button-bg);
+    border-radius: 20px;
+    padding: 10px 25px;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.button:hover, input[type=submit]:hover {
+    background: var(--button-hover-bg);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(10, 44, 28, 0.2);
+}
+
+.button.default, input[type=submit].default {
+    background: var(--button-bg);
+}
+
+/* Forms */
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], input[type=tel], textarea, select {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+input:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px rgba(10, 44, 28, 0.1) !important;
+}
+
+/* Customizing the "Inquiries" section specifically */
+.model-inquiry .results table {
+    border-radius: 12px;
+}

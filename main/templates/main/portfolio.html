@@ -1,0 +1,204 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Portfolio – 3Squares Interior Design{% endblock %}
+{% block description %}Explore 3Squares portfolio of corporate fitouts, coffee shops, kitchens, booths, meeting areas, and custom furniture projects.{% endblock %}
+
+{% block extra_head %}
+    <style>
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            grid-auto-rows: 250px; 
+            gap: 1.5rem; 
+            grid-auto-flow: dense;
+        }
+        .portfolio-item { 
+            border-radius: 14px; 
+            overflow: hidden; 
+            position: relative; 
+            cursor: none; 
+            height: 100%;
+            visibility: hidden; /* Hidden until JS sets spans */
+        }
+        
+        .span-row-2 { grid-row: span 2; }
+        .span-col-2 { grid-column: span 2; }
+        .span-both { grid-row: span 2; grid-column: span 2; }
+        
+        .portfolio-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            filter: brightness(0.9);
+            will-change: transform, opacity;
+        }
+        
+        .anim-drift img {
+            animation: driftPan 30s linear infinite alternate;
+            transform: scale(1.15);
+        }
+        @keyframes driftPan {
+            0% { transform: scale(1.15) translate(0, 0); }
+            100% { transform: scale(1.15) translate(-2%, 2%); }
+        }
+
+        .portfolio-overlay { 
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,44,28,0.7) 0%, transparent 40%); opacity: 1; transition: opacity 0.4s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; 
+        }
+        .portfolio-overlay h4 { font-family: var(--font-serif); font-size: 1.6rem; color: #fff; margin-bottom: 0.4rem; }
+        .portfolio-overlay span { font-size: 0.85rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 2px; }
+        .portfolio-item.hidden { display: none; }
+        
+        @media (max-width: 968px) { 
+            .portfolio-grid { grid-template-columns: 1fr; } 
+            .span-col-2 { grid-column: span 1; }
+        }
+
+        /* Canva-like specific entry animations */
+        .canva-rise { transform: translateY(100px); opacity: 0; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
+        .canva-rise.is-visible { opacity: 1; transform: translateY(0); }
+        
+        .canva-pop { transform: scale(0.9); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); }
+        .canva-pop.is-visible { opacity: 1; transform: scale(1); }
+        
+        .canva-fade { opacity: 0; transition: opacity 1.5s ease-out; }
+        .canva-fade.is-visible { opacity: 1; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="container">
+            <h2 class="subtitle animate-on-scroll slide-up">Our Work</h2>
+            <h1 class="title animate-on-scroll slide-up staggered">Transformative Design<br>Projects</h1>
+            <p class="description animate-on-scroll slide-up staggered">Explore our collection of corporate fitouts, coffee shops, kitchens, booths, and custom spaces.</p>
+        </div>
+    </div>
+
+    <main class="page-wrapper" style="padding-top:0;">
+        <section class="page-section">
+            <div class="container">
+                <!-- Filters -->
+                <div class="portfolio-filters mt-2 mb-5 animate-on-scroll fade-in">
+                    <button class="filter-btn active magnetic-btn" data-filter="All">All</button>
+                    <button class="filter-btn magnetic-btn" data-filter="Corporate Fitouts">Corporate Fitouts</button>
+                    <button class="filter-btn magnetic-btn" data-filter="Projects">Projects</button>
+                    <button class="filter-btn magnetic-btn" data-filter="Coffee Shops">Coffee Shops</button>
+                    <button class="filter-btn magnetic-btn" data-filter="Kitchens">Kitchens</button>
+                    <button class="filter-btn magnetic-btn" data-filter="Booths">Booths</button>
+                    <button class="filter-btn magnetic-btn" data-filter="Meeting Areas">Meeting Areas</button>
+                    <button class="filter-btn magnetic-btn" data-filter="Furniture">Furniture</button>
+                </div>
+
+                <!-- Dynamic Portfolio Grid Collage -->
+                <div class="portfolio-grid" id="dynamic-grid">
+                    <!-- 12 Unique Images + 1 Video -->
+                    <div class="portfolio-item animate-on-scroll canva-rise" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.44 AM (1).jpeg' %}" alt="Portfolio Image 1" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Outdoor Seating Setup</h4><span>Portraits</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-pop delay-100" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.45 AM (1).jpeg' %}" alt="Portfolio Image 2" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Signage board</h4><span>Events</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-fade anim-drift delay-200" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.46 AM (1).jpeg' %}" alt="Portfolio Image 3" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Wood Structure Work</h4><span>Corporate</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-rise" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.46 AM (2).jpeg' %}" alt="Portfolio Image 4" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Decor + Display</h4><span>Lifestyle</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-pop delay-100" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.47 AM (1).jpeg' %}" alt="Portfolio Image 5" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Cafe interior pastel</h4><span>Corporate</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-fade delay-200" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.47 AM.jpeg' %}" alt="Portfolio Image 6" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Cafe seating</h4><span>Corporate</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-rise" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.50 AM.jpeg' %}" alt="Portfolio Image 7" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Lounge seating</h4><span>Corporate</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-pop delay-100" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.51 AM (2).jpeg' %}" alt="Portfolio Image 8" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Shelf</h4><span>Corporate</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-rise delay-200" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.52 AM (1).jpeg' %}" alt="Portfolio Image 9" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Fun cafe decor</h4><span>Corporate</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-pop delay-100" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.52 AM.jpeg' %}" alt="Portfolio Image 10" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Clothing booth</h4><span>Corporate</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-fade delay-200" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.53 AM (1).jpeg' %}" alt="Portfolio Image 11" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Boat seating luxury</h4><span>Travel</span></div>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll canva-rise" data-category="Projects">
+                        <img src="{% static 'main/images/WhatsApp Image 2026-04-08 at 10.31.53 AM.jpeg' %}" alt="Portfolio Image 12" onload="this.parentElement.style.visibility='visible'">
+                        <div class="portfolio-overlay"><h4>Glass structure setup</h4><span>Corporate</span></div>
+                    </div>
+                    <!-- Video Item -->
+                    <div class="portfolio-item animate-on-scroll canva-pop delay-100 span-col-2" data-category="Projects">
+                        <video src="{% static 'main/images/WhatsApp Video 2026-04-08 at 10.31.53 AM.mp4' %}" autoplay muted loop playsinline onloadedmetadata="this.parentElement.style.visibility='visible'" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                        <div class="portfolio-overlay"><h4>Workspace Overview</h4><span>Video</span></div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="{% url 'contact' %}"><button class="cta-button magnetic-btn">Start Your Project</button></a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        // Aspect Ratio Detection for dynamic Grid Spans
+        window.addEventListener('load', () => {
+            document.querySelectorAll('#dynamic-grid img').forEach(img => {
+                const item = img.closest('.portfolio-item');
+                if (item.classList.contains('span-col-2') || item.classList.contains('span-row-2')) return;
+                const ratio = img.naturalWidth / img.naturalHeight;
+                if (ratio > 1.25) item.classList.add('span-col-2');
+                else if (ratio < 0.8) item.classList.add('span-row-2');
+            });
+
+            document.querySelectorAll('#dynamic-grid video').forEach(video => {
+                const item = video.closest('.portfolio-item');
+                if (item.classList.contains('span-col-2') || item.classList.contains('span-row-2')) {
+                    item.style.visibility = 'visible';
+                    return;
+                }
+                const ratio = video.videoWidth / video.videoHeight;
+                if (ratio > 1.25) item.classList.add('span-col-2');
+                else if (ratio < 0.8) item.classList.add('span-row-2');
+                item.style.visibility = 'visible';
+            });
+        });
+
+        // Portfolio filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.portfolio-item').forEach(item => {
+                    if (filter === 'All' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = '1', 50);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Contact – 3Squares Interior Design{% endblock %}
+{% block description %}Get in touch with 3Squares for premium corporate interior design and fit-out services.{% endblock %}
+
+{% block content %}
+    <div class="page-hero">
+        <div class="container">
+            <h2 class="subtitle animate-on-scroll slide-up">Get In Touch</h2>
+            <h1 class="title animate-on-scroll slide-up staggered">Let's build something<br>beautiful together.</h1>
+            <p class="description animate-on-scroll slide-up staggered">Have a project in mind? We'd love to hear about it. Reach out and let's start the conversation.</p>
+        </div>
+    </div>
+
+    <main class="page-wrapper" style="padding-top:0;">
+        <section class="page-section">
+            <div class="drafting-detail detail-top-right">INQUIRY_BUS: 1.0.4<br>CONN: SECURE</div>
+            <div class="container contact-layout">
+                <div class="contact-info animate-on-scroll fade-in">
+                    <h2 class="subtitle">Reach Out</h2>
+                    <h2 class="title mb-3">
+                        <span class="split-line"><span>Start your</span></span>
+                        <span class="split-line"><span>next project.</span></span>
+                    </h2>
+                    
+                    <div class="contact-details mt-4">
+                        <div class="detail-block">
+                            <h3>Email Us</h3>
+                            <p>3squaresid@gmail.com</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>Call Us</h3>
+                            <p>+971 055 208 2041</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>Office Hours</h3>
+                            <p>Monday – Friday: 9:00 AM – 6:00 PM<br>Weekend: By Appointment</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>Location</h3>
+                            <p>Ajman, United Arab Emirates</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper animate-on-scroll scale-in">
+                    {% if messages %}
+                        <div class="messages mb-4">
+                            {% for message in messages %}
+                                <div class="glass-card p-3 mb-2 {% if message.tags == 'success' %}border-success{% else %}border-error{% endif %}" style="border: 1px solid silver; border-radius: 8px; background: rgba(255,255,255,0.8);">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <form class="contact-form glass-card tilt-effect" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Your Name" id="contact-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="Your Email" id="contact-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" placeholder="Your Phone Number" id="contact-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Type</label>
+                            <select name="project-type" style="width:100%;padding:1.2rem;border:1px solid rgba(0,0,0,0.1);border-radius:8px;font-family:var(--font-primary);font-size:1.1rem;background-color:rgba(255,255,255,0.5);backdrop-filter:blur(5px);cursor:none;" id="contact-project-type" required>
+                                <option value="">Select a service...</option>
+                                <option value="corporate-fitout">Corporate Fitout</option>
+                                <option value="coffee-shop">Coffee Shop</option>
+                                <option value="kitchen">Commercial Kitchen</option>
+                                <option value="booth">Event Booth</option>
+                                <option value="meeting-area">Meeting Area</option>
+                                <option value="furniture">Custom Furniture</option>
+                                <option value="other">Other Project</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" placeholder="Tell us about your project..." rows="5" id="contact-message" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button w-100 magnetic-btn" id="contact-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Adjusting for the fact that we use "submit" type now instead of manual button click in previous JS if any
+    // The shared.js doesn't seem to have specific submit logic, but let's ensure it works.
+</script>
+{% endblock %}

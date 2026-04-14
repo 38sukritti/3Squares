@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}3Squares Interior Design{% endblock %}</title>
+    <meta name="description" content="{% block description %}Premium interior design and fit-out services for corporate environments.{% endblock %}">
+    <link rel="stylesheet" href="{% static 'main/shared.css' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'main/images/favicon.svg' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <div class="grid-background"></div>
+    <div class="scroll-progress-container"><div class="scroll-progress-bar"></div></div>
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <header class="header glass-header reveal-down">
+        <nav class="navbar container">
+            <a href="{% url 'home' %}" class="logo-container">
+                <svg width="45" height="45" viewBox="0 0 120 120" class="logo-icon">
+                    <rect x="10" y="10" width="100" height="100" fill="none" stroke="#0a2c1c" stroke-width="12"/>
+                    <rect x="35" y="35" width="50" height="50" fill="none" stroke="#0a2c1c" stroke-width="12"/>
+                    <rect x="60" y="60" width="1" height="1" fill="none" stroke="#0a2c1c" stroke-width="16"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-title">3SQUARES</span>
+                    <span class="logo-subtitle">INTERIOR DESIGN</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a></li>
+                <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a></li>
+                <li><a href="{% url 'portfolio' %}" class="{% if request.resolver_match.url_name == 'portfolio' %}active{% endif %}">Portfolio</a></li>
+                <li><a href="{% url 'membership' %}" class="{% if request.resolver_match.url_name == 'membership' %}active{% endif %}">Membership</a></li>
+                <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="footer">
+        <div class="container footer-content animate-on-scroll fade-in">
+            <div class="footer-col">
+                <div class="logo-container mb-3">
+                    <svg width="35" height="35" viewBox="0 0 120 120">
+                        <rect x="10" y="10" width="100" height="100" fill="none" stroke="#ffffff" stroke-width="12"/>
+                        <rect x="35" y="35" width="50" height="50" fill="none" stroke="#ffffff" stroke-width="12"/>
+                        <rect x="60" y="60" width="1" height="1" fill="none" stroke="#ffffff" stroke-width="16"/>
+                    </svg>
+                    <div class="logo-text">
+                        <span class="footer-logo-title">3SQUARES</span>
+                        <span class="footer-logo-subtitle">INTERIOR DESIGN</span>
+                    </div>
+                </div>
+                <p>Designing spaces that perform. Premium interior design and fit-out services for discerning clients.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'services' %}">Services</a>
+                <a href="{% url 'portfolio' %}">Portfolio</a>
+                <a href="{% url 'membership' %}">Membership</a>
+                <a href="{% url 'contact' %}">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <a href="{% url 'services' %}">Corporate Fitouts</a>
+                <a href="{% url 'services' %}">Coffee Shops</a>
+                <a href="{% url 'services' %}">Kitchens</a>
+                <a href="{% url 'services' %}">Meeting Areas</a>
+                <a href="{% url 'services' %}">Event Booths</a>
+                <a href="{% url 'services' %}">Furniture</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 3Squares Interior Design. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'main/shared.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
