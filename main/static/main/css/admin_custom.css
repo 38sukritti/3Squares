@@ -14,6 +14,9 @@
     --default-button-bg: #f8f9fa;
     --default-button-hover-bg: #e9ecef;
     --body-bg: #f4f7f6;
+    --body-fg: #1a1a1a;
+    --body-quiet-color: #4a4a4a;
+    --body-loud-color: #000000;
 }
 
 /* Header Styling */
@@ -107,6 +110,18 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     border-radius: 6px;
     border: 1px solid #ddd;
     padding: 10px;
+    color: var(--body-fg);
+    background: #fff;
+}
+
+/* Fix for label visibility */
+form label {
+    color: var(--body-fg) !important;
+    font-weight: 600;
+}
+
+.aligned label {
+    color: var(--body-fg) !important;
 }
 
 input:focus {
