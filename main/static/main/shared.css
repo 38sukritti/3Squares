@@ -215,6 +215,8 @@ body { font-family: var(--font-primary); background-color: var(--bg-color); colo
 .pulse-anim { animation: simplePulse 2s infinite ease-in-out; }
 @keyframes simplePulse { 0% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.05); } 100% { transform: translateX(-50%) scale(1); } }
 .tilt-effect { transform-style: preserve-3d; transform: perspective(1000px); }
+.hover-scale { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.hover-scale:hover { transform: scale(1.02); }
 
 /* Page Hero Banner */
 .page-hero { background: linear-gradient(135deg, var(--accent-green) 0%, #1a4d2e 100%); color: white; padding: 120px 0 80px 0; text-align: center; position: relative; overflow: hidden; }

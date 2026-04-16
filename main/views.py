@@ -43,11 +43,13 @@ def _get_email_base(content_html):
     <!-- Header with grid pattern -->
     <tr>
         <td style="background:linear-gradient(135deg,#0a2c1c 0%,#1a4d2e 100%);padding:40px 40px 35px 40px;text-align:center;position:relative;">
-            <!-- Logo SVG as nested squares -->
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 15px auto;">
+            <!-- Branded Logo - 3 Nested Squares -->
+            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;">
             <tr><td style="text-align:center;">
-                <div style="display:inline-block;width:50px;height:50px;border:3px solid #ffffff;position:relative;">
-                    <div style="width:28px;height:28px;border:3px solid rgba(255,255,255,0.7);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+                <div style="display:inline-block;width:48px;height:48px;border:4px solid #ffffff;position:relative;margin:0 auto;">
+                    <div style="width:24px;height:24px;border:4px solid rgba(255,255,255,0.8);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+                        <div style="width:2px;height:2px;background-color:rgba(255,255,255,0.9);border:3px solid rgba(255,255,255,0.9);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+                    </div>
                 </div>
             </td></tr>
             </table>
