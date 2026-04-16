@@ -264,7 +264,7 @@ def contact(request):
             messages.success(request, "Your inquiry has been received! We'll get back to you soon.")
         else:
             try:
-                # Path to logo for CID embedding
+                # Path to logo for CID embedding (source of truth)
                 logo_path = os.path.join(settings.BASE_DIR, 'main', 'static', 'main', 'images', 'logo.png')
                 logo_data = None
                 if os.path.exists(logo_path):
@@ -283,12 +283,16 @@ def contact(request):
                     to=['3squaresid@gmail.com'],
                 )
                 admin_email.attach_alternative(admin_html, "text/html")
-                admin_email.mixed_subtype = 'related'
-
+                
                 if logo_data:
-                    logo = MIMEImage(logo_data)
-                    logo.add_header('Content-ID', '<logo_cid>')
-                    admin_email.attach(logo)
+                    try:
+                        logo = MIMEImage(logo_data)
+                        logo.add_header('Content-ID', '<logo_cid>')
+                        admin_email.attach(logo)
+                        # Set subtype to 'related' only if there's an inline attachment
+                        admin_email.mixed_subtype = 'related'
+                    except Exception as e:
+                        logger.error(f"Error attaching logo to admin email: {e}")
 
                 admin_email.send(fail_silently=False)
                 logger.info(f"Admin notification email sent for inquiry from {name}")
@@ -302,12 +306,15 @@ def contact(request):
                     to=[email],
                 )
                 user_email.attach_alternative(user_html, "text/html")
-                user_email.mixed_subtype = 'related'
-
+                
                 if logo_data:
-                    logo = MIMEImage(logo_data)
-                    logo.add_header('Content-ID', '<logo_cid>')
-                    user_email.attach(logo)
+                    try:
+                        logo = MIMEImage(logo_data)
+                        logo.add_header('Content-ID', '<logo_cid>')
+                        user_email.attach(logo)
+                        user_email.mixed_subtype = 'related'
+                    except Exception as e:
+                        logger.error(f"Error attaching logo to user email: {e}")
 
                 user_email.send(fail_silently=False)
                 logger.info(f"Confirmation email sent to {email}")
@@ -315,6 +322,11 @@ def contact(request):
                 messages.success(request, "Your message has been sent successfully! We'll get back to you soon.")
             except Exception as e:
                 logger.error(f"Email sending failed: {type(e).__name__}: {e}")
-                messages.warning(request, "Your inquiry has been received, but we couldn't send a confirmation email. Our team will still contact you shortly.")
+                # Provide more context if it's an authentication error
+                error_msg = str(e)
+                if "530" in error_msg:
+                    messages.warning(request, "Authentication failed. Please check your SMTP credentials.")
+                else:
+                    messages.warning(request, "Your inquiry has been received, but we couldn't send a confirmation email. Our team will still contact you shortly.")
 
     return render(request, 'main/contact.html')
