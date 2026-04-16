@@ -42,17 +42,15 @@ def _get_email_base(content_html):
 <tr><td align="center">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.08);">
 
-    <!-- Header with grid pattern -->
+    <!-- Header with brand color -->
     <tr>
-        <td style="background:linear-gradient(135deg,#0a2c1c 0%,#1a4d2e 100%);padding:40px 40px 35px 40px;text-align:center;position:relative;">
-            <!-- Branded Logo - Using exact image provided -->
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;">
+        <td style="background-color:#0a2c1c;padding:50px 40px;text-align:center;position:relative;">
+            <!-- Branded Logo - High Resolution Image -->
+            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
             <tr><td style="text-align:center;">
-                <img src="cid:logo_img" alt="3Squares Logo" width="60" style="display:block;margin:0 auto;border:0;">
+                <img src="cid:logo_img" alt="3Squares Logo" width="140" style="display:block;margin:0 auto;border:0;width:140px;height:auto;">
             </td></tr>
             </table>
-            <h1 style="margin:0;font-size:26px;font-weight:900;color:#ffffff;letter-spacing:4px;font-family:'Segoe UI',Arial,sans-serif;">3SQUARES</h1>
-            <p style="margin:5px 0 0 0;font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:3px;font-weight:600;">INTERIOR DESIGN</p>
         </td>
     </tr>
 
