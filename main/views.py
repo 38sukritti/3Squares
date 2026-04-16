@@ -1,11 +1,9 @@
 import logging
-import os
 from django.shortcuts import render
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.conf import settings
 from .models import Inquiry
-from email.mime.image import MIMEImage
 
 logger = logging.getLogger(__name__)
 
@@ -44,13 +42,25 @@ def _get_email_base(content_html):
 
     <!-- Header with brand color -->
     <tr>
-        <td style="background-color:#0a2c1c;padding:50px 40px;text-align:center;position:relative;">
-            <!-- Branded Logo - High Resolution Image -->
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
-            <tr><td style="text-align:center;">
-                <img src="cid:logo_img" alt="3Squares Logo" width="140" style="display:block;margin:0 auto;border:0;width:140px;height:auto;">
-            </td></tr>
+        <td style="background-color:#0a2c1c;padding:50px 40px;text-align:center;">
+            <!-- Golden Ratio Table Logo - Bulletproof and Persistent -->
+            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;border:6px solid #ffffff;width:64px;height:64px;">
+            <tr>
+                <td align="center" style="padding:12px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" style="border:6px solid #ffffff;width:28px;height:28px;">
+                    <tr>
+                        <td align="center" style="padding:4px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" style="background-color:#ffffff;width:8px;height:8px;">
+                            <tr><td></td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    </table>
+                </td>
+            </tr>
             </table>
+            <h1 style="margin:0;font-size:26px;font-weight:900;color:#ffffff;letter-spacing:4px;font-family:'Segoe UI',Arial,sans-serif;">3SQUARES</h1>
+            <p style="margin:5px 0 0 0;font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:3px;font-weight:600;">INTERIOR DESIGN</p>
         </td>
     </tr>
 
@@ -263,9 +273,6 @@ def contact(request):
             messages.success(request, "Your inquiry has been received! We'll get back to you soon.")
         else:
             try:
-                # Prepare CID image for emails
-                logo_path = os.path.join(settings.BASE_DIR, 'main', 'static', 'main', 'images', 'email_logo.jpeg')
-                
                 # 1. HTML email to Admin
                 admin_html = _build_admin_email(name, email, phone, project_type, message)
                 admin_email = EmailMessage(
@@ -275,15 +282,6 @@ def contact(request):
                     to=['3squaresid@gmail.com'],
                 )
                 admin_email.content_subtype = 'html'
-                admin_email.mixed_subtype = 'related'
-                
-                if os.path.exists(logo_path):
-                    with open(logo_path, 'rb') as f:
-                        logo_data = f.read()
-                        msg_img = MIMEImage(logo_data)
-                        msg_img.add_header('Content-ID', '<logo_img>')
-                        admin_email.attach(msg_img)
-
                 admin_email.send(fail_silently=False)
                 logger.info(f"Admin notification email sent for inquiry from {name}")
 
@@ -296,15 +294,6 @@ def contact(request):
                     to=[email],
                 )
                 user_email.content_subtype = 'html'
-                user_email.mixed_subtype = 'related'
-
-                if os.path.exists(logo_path):
-                    with open(logo_path, 'rb') as f:
-                        logo_data = f.read()
-                        msg_img = MIMEImage(logo_data)
-                        msg_img.add_header('Content-ID', '<logo_img>')
-                        user_email.attach(msg_img)
-
                 user_email.send(fail_silently=False)
                 logger.info(f"Confirmation email sent to {email}")
 
