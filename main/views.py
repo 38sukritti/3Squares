@@ -43,14 +43,14 @@ def _get_email_base(content_html):
     <!-- Header with brand color -->
     <tr>
         <td style="background-color:#0a2c1c;padding:50px 40px;text-align:center;">
-            <!-- Golden Ratio Table Logo - Bulletproof and Persistent -->
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;border:6px solid #ffffff;width:64px;height:64px;">
+            <!-- Symmetrical Branded Logo (Equal Gaps, Bulletproof) -->
+            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;border:4px solid #ffffff;width:60px;height:60px;">
             <tr>
-                <td align="center" style="padding:12px;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" style="border:6px solid #ffffff;width:28px;height:28px;">
+                <td align="center" style="padding:10px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" style="border:4px solid #ffffff;width:32px;height:32px;">
                     <tr>
-                        <td align="center" style="padding:4px;">
-                            <table role="presentation" cellpadding="0" cellspacing="0" style="background-color:#ffffff;width:8px;height:8px;">
+                        <td align="center" style="padding:10px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" style="background-color:#ffffff;width:4px;height:4px;">
                             <tr><td></td></tr>
                             </table>
                         </td>
