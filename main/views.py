@@ -43,15 +43,21 @@ def _get_email_base(content_html):
     <!-- Header with grid pattern -->
     <tr>
         <td style="background:linear-gradient(135deg,#0a2c1c 0%,#1a4d2e 100%);padding:40px 40px 35px 40px;text-align:center;position:relative;">
-            <!-- Branded Logo - 3 Nested Squares -->
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;">
-            <tr><td style="text-align:center;">
-                <div style="display:inline-block;width:48px;height:48px;border:4px solid #ffffff;position:relative;margin:0 auto;">
-                    <div style="width:24px;height:24px;border:4px solid rgba(255,255,255,0.8);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
-                        <div style="width:2px;height:2px;background-color:rgba(255,255,255,0.9);border:3px solid rgba(255,255,255,0.9);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
-                    </div>
-                </div>
-            </td></tr>
+            <!-- Bulletproof Branded Logo (3 Nested Squares) -->
+            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;border:4px solid #ffffff;width:50px;height:50px;">
+            <tr>
+                <td align="center" style="padding:7px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" style="border:4px solid #ffffff;width:24px;height:24px;">
+                    <tr>
+                        <td align="center" style="padding:4px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" style="background-color:#ffffff;width:6px;height:6px;">
+                            <tr><td></td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    </table>
+                </td>
+            </tr>
             </table>
             <h1 style="margin:0;font-size:26px;font-weight:900;color:#ffffff;letter-spacing:4px;font-family:'Segoe UI',Arial,sans-serif;">3SQUARES</h1>
             <p style="margin:5px 0 0 0;font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:3px;font-weight:600;">INTERIOR DESIGN</p>
