@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
+import logging
 import dj_database_url
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,12 +27,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&zkgowc$he!eyk-_!r__40+k35q*zur(li=)8x$pc(g&6t90ck'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = [
     'threesquares.onrender.com',
     'localhost',
     '127.0.0.1'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://threesquares.onrender.com',
 ]
 
 
@@ -151,8 +158,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = '3squaresid@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '') # Make sure to set this environment variable
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = '3squaresid@gmail.com'
+
+if not EMAIL_HOST_PASSWORD:
+    logger.warning('EMAIL_HOST_PASSWORD is not set! Email sending will fail with a 530 Authentication error.')
 
 WHITENOISE_MANIFEST_STRICT = False
 
