@@ -154,3 +154,5 @@ EMAIL_HOST_USER = '3squaresid@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '') # Make sure to set this environment variable
 DEFAULT_FROM_EMAIL = '3squaresid@gmail.com'
 
+WHITENOISE_MANIFEST_STRICT = False
+
