@@ -43,15 +43,21 @@ def _get_email_base(content_html):
     <!-- Header with grid pattern -->
     <tr>
         <td style="background:linear-gradient(135deg,#0a2c1c 0%,#1a4d2e 100%);padding:40px 40px 35px 40px;text-align:center;position:relative;">
-            <!-- Branded Logo - Match Website Footer Proportion -->
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;">
-            <tr><td style="text-align:center;">
-                <svg width="45" height="45" viewBox="0 0 120 120" style="display:block;margin:0 auto;">
-                    <rect x="10" y="10" width="100" height="100" fill="none" stroke="#ffffff" stroke-width="12"/>
-                    <rect x="35" y="35" width="50" height="50" fill="none" stroke="#ffffff" stroke-width="12"/>
-                    <rect x="60" y="60" width="1" height="1" fill="none" stroke="#ffffff" stroke-width="16"/>
-                </svg>
-            </td></tr>
+            <!-- Thick-Stroke Branded Logo (Bulletproof for all Email Clients) -->
+            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;border:6px solid #ffffff;width:50px;height:50px;">
+            <tr>
+                <td align="center" style="padding:6px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" style="border:6px solid #ffffff;width:22px;height:22px;">
+                    <tr>
+                        <td align="center" style="padding:2px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" style="background-color:#ffffff;width:6px;height:6px;">
+                            <tr><td></td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    </table>
+                </td>
+            </tr>
             </table>
             <h1 style="margin:0;font-size:26px;font-weight:900;color:#ffffff;letter-spacing:4px;font-family:'Segoe UI',Arial,sans-serif;">3SQUARES</h1>
             <p style="margin:5px 0 0 0;font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:3px;font-weight:600;">INTERIOR DESIGN</p>
