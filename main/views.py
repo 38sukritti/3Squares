@@ -1,6 +1,8 @@
+import os
 import logging
 from django.shortcuts import render
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
+from email.mime.image import MIMEImage
 from django.contrib import messages
 from django.conf import settings
 from .models import Inquiry
@@ -44,21 +46,10 @@ def _get_email_base(content_html):
     <tr>
         <td style="background-color:#0a2c1c;padding:50px 40px;text-align:center;">
             <!-- Symmetrical Branded Logo (Equal Gaps, Bulletproof) -->
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 20px auto;border:4px solid #ffffff;width:60px;height:60px;">
-            <tr>
-                <td align="center" style="padding:10px;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" style="border:4px solid #ffffff;width:32px;height:32px;">
-                    <tr>
-                        <td align="center" style="padding:10px;">
-                            <table role="presentation" cellpadding="0" cellspacing="0" style="background-color:#ffffff;width:4px;height:4px;">
-                            <tr><td></td></tr>
-                            </table>
-                        </td>
-                    </tr>
-                    </table>
-                </td>
-            </tr>
-            </table>
+            <img src="cid:logo_cid"
+     alt="3Squares Logo"
+     width="120"
+     style="display:block; margin:0 auto 20px auto;" />
             <h1 style="margin:0;font-size:26px;font-weight:900;color:#ffffff;letter-spacing:4px;font-family:'Segoe UI',Arial,sans-serif;">3SQUARES</h1>
             <p style="margin:5px 0 0 0;font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:3px;font-weight:600;">INTERIOR DESIGN</p>
         </td>
@@ -273,27 +264,51 @@ def contact(request):
             messages.success(request, "Your inquiry has been received! We'll get back to you soon.")
         else:
             try:
+                # Path to logo for CID embedding
+                logo_path = os.path.join(settings.BASE_DIR, 'main', 'static', 'main', 'images', 'logo.png')
+                logo_data = None
+                if os.path.exists(logo_path):
+                    try:
+                        with open(logo_path, 'rb') as f:
+                            logo_data = f.read()
+                    except Exception as e:
+                        logger.error(f"Error reading logo file: {e}")
+
                 # 1. HTML email to Admin
                 admin_html = _build_admin_email(name, email, phone, project_type, message)
-                admin_email = EmailMessage(
+                admin_email = EmailMultiAlternatives(
                     subject=f"New Inquiry from {name} - 3Squares Interior Design",
-                    body=admin_html,
+                    body=f"New Inquiry from {name}. Please view in an HTML compatible email client.",
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     to=['3squaresid@gmail.com'],
                 )
-                admin_email.content_subtype = 'html'
+                admin_email.attach_alternative(admin_html, "text/html")
+                admin_email.mixed_subtype = 'related'
+
+                if logo_data:
+                    logo = MIMEImage(logo_data)
+                    logo.add_header('Content-ID', '<logo_cid>')
+                    admin_email.attach(logo)
+
                 admin_email.send(fail_silently=False)
                 logger.info(f"Admin notification email sent for inquiry from {name}")
 
                 # 2. HTML confirmation email to User
                 user_html = _build_user_email(name, project_type)
-                user_email = EmailMessage(
+                user_email = EmailMultiAlternatives(
                     subject="We've received your inquiry - 3Squares Interior Design",
-                    body=user_html,
+                    body=f"Thank you {name}, we've received your inquiry. Please view in an HTML compatible email client.",
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     to=[email],
                 )
-                user_email.content_subtype = 'html'
+                user_email.attach_alternative(user_html, "text/html")
+                user_email.mixed_subtype = 'related'
+
+                if logo_data:
+                    logo = MIMEImage(logo_data)
+                    logo.add_header('Content-ID', '<logo_cid>')
+                    user_email.attach(logo)
+
                 user_email.send(fail_silently=False)
                 logger.info(f"Confirmation email sent to {email}")
 
