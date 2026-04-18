@@ -263,7 +263,7 @@ def contact(request):
         else:
             try:
                 # Path to logo for CID embedding (source of truth)
-                logo_path = os.path.join(settings.BASE_DIR, 'main', 'static', 'main', 'images', 'logo.png')
+                logo_path = os.path.join(settings.BASE_DIR, 'main', 'static', 'main', 'images', 'logo_white.png')
                 logo_data = None
                 if os.path.exists(logo_path):
                     try:

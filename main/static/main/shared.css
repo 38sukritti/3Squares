@@ -180,7 +180,7 @@ body { font-family: var(--font-primary); background-color: var(--bg-color); colo
 .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 3rem; color: rgba(255,255,255,0.5); font-size: 1rem; }
 .footer-logo-title { font-family: var(--font-primary); font-weight: 900; font-size: 1.4rem; line-height: 1; color: #ffffff !important; letter-spacing: 1.5px; }
 .footer-logo-subtitle { font-family: var(--font-primary); font-weight: 600; font-size: 0.55rem; line-height: 1; color: rgba(255,255,255,0.7) !important; letter-spacing: 2px; margin-top: 3px; }
-.footer-logo-img { height: 65px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; transition: opacity 0.3s ease; }
+.footer-logo-img { height: 100px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; transition: opacity 0.3s ease; margin-bottom: 30px; }
 .footer-logo-img:hover { opacity: 1; }
 
 /* Splash Screen */

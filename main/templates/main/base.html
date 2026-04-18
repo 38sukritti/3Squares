@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}3Squares Interior Design{% endblock %}</title>
+    <title>{% block title %}3Squares{% endblock %}</title>
     <meta name="description" content="{% block description %}Premium interior design and fit-out services for corporate environments.{% endblock %}">
     <link rel="stylesheet" href="{% static 'main/shared.css' %}">
-    <link rel="icon" type="image/png" sizes="any" href="{% static 'main/images/favicon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/images/favicon.png' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'main/images/favicon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'main/images/favicon.png' %}?v=2">
+    <link rel="shortcut icon" type="image/png" href="{% static 'main/images/favicon.png' %}?v=2">
     {% block extra_head %}{% endblock %}
 </head>
 <body>
