@@ -124,9 +124,7 @@
         }
         .header.glass-header .nav-links a { color: rgba(255,255,255,0.8); }
         .header.glass-header .nav-links a.active { color: #fff; }
-        .header.glass-header .logo-title { color: #fff; }
-        .header.glass-header .logo-subtitle { color: rgba(255,255,255,0.7); }
-        .header.glass-header .logo-icon rect { stroke: #ffffff; }
+        .header.glass-header .logo-icon-img { filter: brightness(0) invert(1); opacity: 0.9; }
 
         @media (max-width: 968px) {
             .hero-content .title { font-size: 3rem; }
@@ -299,18 +297,14 @@
                     a.style.color = ''; 
                     if (a.classList.contains('active')) a.style.color = 'var(--accent-green)';
                 });
-                header.querySelector('.logo-title').style.color = '';
-                header.querySelector('.logo-subtitle').style.color = '';
-                header.querySelectorAll('.logo-icon rect').forEach(r => { r.setAttribute('stroke', '#0a2c1c'); });
+                header.querySelector('.logo-icon-img').style.filter = '';
             } else {
                 header.style.background = 'rgba(255,255,255,0.15)';
                 header.style.borderBottom = '1px solid rgba(255,255,255,0.2)';
                 header.querySelectorAll('.nav-links a').forEach(a => {
                     a.style.color = a.classList.contains('active') ? '#fff' : 'rgba(255,255,255,0.8)';
                 });
-                header.querySelector('.logo-title').style.color = '#fff';
-                header.querySelector('.logo-subtitle').style.color = 'rgba(255,255,255,0.7)';
-                header.querySelectorAll('.logo-icon rect').forEach(r => { r.setAttribute('stroke', '#ffffff'); });
+                header.querySelector('.logo-icon-img').style.filter = 'brightness(0) invert(1)';
             }
         });
     </script>

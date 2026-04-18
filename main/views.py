@@ -48,10 +48,8 @@ def _get_email_base(content_html):
             <!-- Symmetrical Branded Logo (Equal Gaps, Bulletproof) -->
             <img src="cid:logo_cid"
      alt="3Squares Logo"
-     width="120"
-     style="display:block; margin:0 auto 20px auto;" />
-            <h1 style="margin:0;font-size:26px;font-weight:900;color:#ffffff;letter-spacing:4px;font-family:'Segoe UI',Arial,sans-serif;">3SQUARES</h1>
-            <p style="margin:5px 0 0 0;font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:3px;font-weight:600;">INTERIOR DESIGN</p>
+     width="180"
+     style="display:block; margin:0 auto;" />
         </td>
     </tr>
 

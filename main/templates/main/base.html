@@ -7,7 +7,7 @@
     <title>{% block title %}3Squares Interior Design{% endblock %}</title>
     <meta name="description" content="{% block description %}Premium interior design and fit-out services for corporate environments.{% endblock %}">
     <link rel="stylesheet" href="{% static 'main/shared.css' %}">
-    <link rel="icon" type="image/svg+xml" sizes="any" href="{% static 'main/images/favicon.svg' %}">
+    <link rel="icon" type="image/png" sizes="any" href="{% static 'main/images/favicon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/images/favicon.png' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'main/images/favicon.png' %}">
     {% block extra_head %}{% endblock %}
@@ -22,15 +22,7 @@
     <header class="header glass-header reveal-down">
         <nav class="navbar container">
             <a href="{% url 'home' %}" class="logo-container">
-                <svg width="45" height="45" viewBox="0 0 120 120" class="logo-icon">
-                    <rect x="10" y="10" width="100" height="100" fill="none" stroke="#0a2c1c" stroke-width="12"/>
-                    <rect x="35" y="35" width="50" height="50" fill="none" stroke="#0a2c1c" stroke-width="12"/>
-                    <rect x="60" y="60" width="1" height="1" fill="none" stroke="#0a2c1c" stroke-width="16"/>
-                </svg>
-                <div class="logo-text">
-                    <span class="logo-title">3SQUARES</span>
-                    <span class="logo-subtitle">INTERIOR DESIGN</span>
-                </div>
+                <img src="{% static 'main/images/logo.png' %}" alt="3Squares Logo" class="logo-icon-img">
             </a>
             <ul class="nav-links">
                 <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a></li>
@@ -48,17 +40,9 @@
     <footer class="footer">
         <div class="container footer-content animate-on-scroll fade-in">
             <div class="footer-col">
-                <div class="logo-container mb-3">
-                    <svg width="35" height="35" viewBox="0 0 120 120">
-                        <rect x="10" y="10" width="100" height="100" fill="none" stroke="#ffffff" stroke-width="12"/>
-                        <rect x="35" y="35" width="50" height="50" fill="none" stroke="#ffffff" stroke-width="12"/>
-                        <rect x="60" y="60" width="1" height="1" fill="none" stroke="#ffffff" stroke-width="16"/>
-                    </svg>
-                    <div class="logo-text">
-                        <span class="footer-logo-title">3SQUARES</span>
-                        <span class="footer-logo-subtitle">INTERIOR DESIGN</span>
-                    </div>
-                </div>
+                <a href="{% url 'home' %}" class="logo-container mb-3">
+                    <img src="{% static 'main/images/logo.png' %}" alt="3Squares Logo" class="footer-logo-img">
+                </a>
                 <p>Designing spaces that perform. Premium interior design and fit-out services for discerning clients.</p>
             </div>
             <div class="footer-col">
