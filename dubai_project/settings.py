@@ -30,9 +30,9 @@ SECRET_KEY = 'django-insecure-&zkgowc$he!eyk-_!r__40+k35q*zur(li=)8x$pc(g&6t90ck
 DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = [
-    'threesquares.onrender.com',
-    'localhost',
-    '127.0.0.1'
+    "3squares.ae",
+    "www.3squares.ae",
+    "threesquares.onrender.com"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
