@@ -134,9 +134,9 @@ def service_detail(request, slug):
                 {'title': 'Live', 'desc': 'Handover at the exhibition venue.'}
             ],
             'gallery': [
-                'https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80'
+                '/static/main/images/event_booth_1.png',
+                '/static/main/images/event_booth_2.png',
+                '/static/main/images/event_booth_3.png'
             ]
         },
         'meeting-areas': {
@@ -158,7 +158,7 @@ def service_detail(request, slug):
             'gallery': [
                 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80',
                 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80'
+                'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&q=80'
             ]
         },
         'custom-furniture': {
