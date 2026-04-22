@@ -24,32 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* === CUSTOM CURSOR === */
     const cursor = document.querySelector('.custom-cursor');
-    const follower = document.querySelector('.custom-cursor-follower');
-    let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
     document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX; mouseY = e.clientY;
         if (cursor) { 
-            cursor.style.left = mouseX + 'px'; 
-            cursor.style.top = mouseY + 'px'; 
+            cursor.style.left = e.clientX + 'px'; 
+            cursor.style.top = e.clientY + 'px'; 
             
-            // Fix for visibility on dark backgrounds (footer, hero sections, etc.)
+            // Fix for visibility on dark backgrounds
             const isDark = e.target.closest('.footer') || e.target.closest('.service-hero') || e.target.closest('.page-hero');
             if (isDark) {
                 cursor.classList.add('cursor-light');
-                if (follower) follower.classList.add('cursor-light');
             } else {
                 cursor.classList.remove('cursor-light');
-                if (follower) follower.classList.remove('cursor-light');
             }
         }
     });
-    function animateFollower() {
-        followerX += (mouseX - followerX) * 0.15;
-        followerY += (mouseY - followerY) * 0.15;
-        if (follower) { follower.style.left = followerX + 'px'; follower.style.top = followerY + 'px'; }
-        requestAnimationFrame(animateFollower);
-    }
-    animateFollower();
 
     /* === SCROLL ANIMATIONS === */
     const scrollObserver = new IntersectionObserver((entries) => {

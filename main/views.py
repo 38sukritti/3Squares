@@ -239,7 +239,7 @@ def _get_email_base(content_html):
                 <td style="font-size:12px;color:#999;line-height:1.6;">
                     <strong style="color:#0a2c1c;">3Squares Interior Design</strong><br>
                     Ajman, United Arab Emirates<br>
-                    <a href="mailto:3squaresid@gmail.com" style="color:#0a2c1c;text-decoration:none;">3squaresid@gmail.com</a> &nbsp;|&nbsp; +971 055 208 2041
+                    <a href="mailto:3squaresid@gmail.com" style="color:#0a2c1c;text-decoration:none;">3squaresid@gmail.com</a> &nbsp;|&nbsp; +971 55 208 2041
                 </td>
             </tr>
             <tr>
@@ -395,7 +395,7 @@ def _build_user_email(name, project_type):
 
     <p style="margin:25px 0 0 0;font-size:14px;color:#4a4a4a;line-height:1.7;text-align:center;">
         Have questions? Reach out at <a href="mailto:3squaresid@gmail.com" style="color:#0a2c1c;font-weight:600;text-decoration:none;">3squaresid@gmail.com</a><br>
-        or call us at <strong style="color:#0a2c1c;">+971 055 208 2041</strong>
+        or call us at <strong style="color:#0a2c1c;">+971 55 208 2041</strong>
     </p>
     """
     return _get_email_base(content)
