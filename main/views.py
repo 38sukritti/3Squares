@@ -27,6 +27,172 @@ def portfolio(request):
 def membership(request):
     return render(request, 'main/membership.html')
 
+def service_detail(request, slug):
+    services_data = {
+        'corporate-fitouts': {
+            'title': 'Corporate Fitouts',
+            'tag': 'Corporate',
+            'hero_image': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80',
+            'description': 'We transform empty shells into high-performing, branded working environments. Our corporate fitout services combine spatial efficiency with elevated aesthetics.',
+            'details': [
+                'Complete turnkey interior solutions for modern offices.',
+                'Acoustic planning and soundproofing for focused work.',
+                'Open-plan layout optimization and ergonomic furniture.',
+                'Integrated technology and smart office infrastructure.'
+            ],
+            'process': [
+                {'title': 'Analysis', 'desc': 'Understanding your workflow and spatial requirements.'},
+                {'title': 'Concept', 'desc': 'Developing a design that reflects your brand identity.'},
+                {'title': 'Fit-out', 'desc': 'Precision construction and finishing with premium materials.'}
+            ],
+            'gallery': [
+                'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80'
+            ]
+        },
+        'commercial-projects': {
+            'title': 'Commercial Projects',
+            'tag': 'Projects',
+            'hero_image': 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
+            'description': 'Large-scale commercial developments that demand precision engineering and sophisticated design. From retail hubs to innovation centers.',
+            'details': [
+                'Scaleable design solutions for large commercial areas.',
+                'Integrated MEP and architectural fit-out management.',
+                'Material sourcing and logistics for complex projects.',
+                'Compliance with international building and safety standards.'
+            ],
+            'process': [
+                {'title': 'Civil Work', 'desc': 'Structural modifications and foundation prep.'},
+                {'title': 'Systems', 'desc': 'MEP, HVAC, and Fire Safety integration.'},
+                {'title': 'Finishing', 'desc': 'High-spec wall, floor, and ceiling treatments.'}
+            ],
+            'gallery': [
+                '/static/main/images/commercial_project.png',
+                '/static/main/images/commercial_project_2.png',
+                'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80'
+            ]
+        },
+        'coffee-shops': {
+            'title': 'Coffee Shops',
+            'tag': 'Hospitality',
+            'hero_image': 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=80',
+            'description': 'Creating the perfect atmosphere for your customers to relax and recharge. We specialize in inviting, Instagrammable café concepts.',
+            'details': [
+                'Custom coffee counters and ergonomic barista stations.',
+                'Atmospheric lighting design for day and night use.',
+                'Durable, high-traffic flooring and seating solutions.',
+                'Brand-integrated signage and interior theme execution.'
+            ],
+            'process': [
+                {'title': 'Vibe Check', 'desc': 'Setting the mood with lighting and texture.'},
+                {'title': 'Workflow', 'desc': 'Optimizing counter speed and seating flow.'},
+                {'title': 'Launch', 'desc': 'A finished space ready for opening day.'}
+            ],
+            'gallery': [
+                'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80'
+            ]
+        },
+        'commercial-kitchens': {
+            'title': 'Commercial Kitchens',
+            'tag': 'Commercial',
+            'hero_image': 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80',
+            'description': 'Highly functional, sanitary, and ergonomic kitchen environments designed for the rigors of high-volume service.',
+            'details': [
+                'Industrial-grade stainless steel fabrication.',
+                'Optimized workflow layouts for chefs and staff.',
+                'Advanced ventilation and grease management systems.',
+                'Compliance with strict health and safety regulations.'
+            ],
+            'process': [
+                {'title': 'Layout', 'desc': 'Maximizing efficiency in tight spaces.'},
+                {'title': 'Fabrication', 'desc': 'Custom stainless steel work and venting.'},
+                {'title': 'Install', 'desc': 'Heavy equipment placement and testing.'}
+            ],
+            'gallery': [
+                '/static/main/images/commercial_kitchen.png',
+                'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80',
+                '/static/main/images/commercial_kitchen_3.png'
+            ]
+        },
+        'event-booths': {
+            'title': 'Event Booths',
+            'tag': 'Exhibition',
+            'hero_image': 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=80',
+            'description': 'Show-stopping exhibition stands that capture attention from across the floor. Designed for high impact and quick assembly.',
+            'details': [
+                'Custom modular booth designs for global exhibitions.',
+                'Integrated LED displays and high-impact graphics.',
+                'Hidden storage and functional meeting areas.',
+                'Rapid deployment and precision install services.'
+            ],
+            'process': [
+                {'title': 'Identity', 'desc': 'Translating your brand to a 3D space.'},
+                {'title': 'Build', 'desc': 'Pre-fab offsite for flawless onsite setup.'},
+                {'title': 'Live', 'desc': 'Handover at the exhibition venue.'}
+            ],
+            'gallery': [
+                'https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80'
+            ]
+        },
+        'meeting-areas': {
+            'title': 'Meeting & Conf. Areas',
+            'tag': 'Corporate',
+            'hero_image': 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=1600&q=80',
+            'description': 'Places for collaboration, decision-making, and high-tech presentations. Boardrooms that impress and huddle rooms that work.',
+            'details': [
+                'Bespoke boardroom tables with integrated power.',
+                'Wall-mounted AV and video conferencing systems.',
+                'Acoustic wall panels and sound treatments.',
+                'Dimmable, scene-based lighting controls.'
+            ],
+            'process': [
+                {'title': 'Tech Map', 'desc': 'Planning for seamless video and sound.'},
+                {'title': 'Acoustics', 'desc': 'Ensuring privacy and clarity.'},
+                {'title': 'Furniture', 'desc': 'Custom tables and premium ergonomic seating.'}
+            ],
+            'gallery': [
+                'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80'
+            ]
+        },
+        'custom-furniture': {
+            'title': 'Custom Furniture',
+            'tag': 'Furniture',
+            'hero_image': 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1600&q=80',
+            'description': 'Unique pieces designed to fit your space perfectly. From reception desks to specialized storage, we craft furniture that lasts.',
+            'details': [
+                'Bespoke woodworking and CNC precision cuts.',
+                'Premium material selection: wood, stone, metal.',
+                'Ergonomic design tailored to your specific use.',
+                'In-house fabrication for total quality control.'
+            ],
+            'process': [
+                {'title': 'Sketch', 'desc': 'Hand-drawn and CAD concepts.'},
+                {'title': 'CRAFT', 'desc': 'Master craftsmanship in our workshop.'},
+                {'title': 'Polish', 'desc': 'Final finishing and protective treatments.'}
+            ],
+            'gallery': [
+                '/static/main/images/custom_furniture1.png',
+                '/static/main/images/customer_furniture2.png',
+                'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=800&q=80'
+            ]
+        }
+    }
+    
+    service = services_data.get(slug)
+    if not service:
+        from django.http import Http404
+        raise Http404("Service not found")
+        
+    return render(request, 'main/service_detail.html', {'service': service})
+
+
 
 def _get_email_base(content_html):
     """Wraps email content in the 3Squares branded HTML template."""

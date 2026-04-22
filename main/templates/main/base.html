@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'main/shared.css' %}">
     <link rel="icon" type="image/png" href="{% static 'main/images/favicon.png' %}?v=2">
     <link rel="shortcut icon" type="image/png" href="{% static 'main/images/favicon.png' %}?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -60,6 +61,30 @@
                 <a href="{% url 'services' %}">Meeting Areas</a>
                 <a href="{% url 'services' %}">Event Booths</a>
                 <a href="{% url 'services' %}">Furniture</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:3squaresid@gmail.com">3squaresid@gmail.com</a>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+9710552082041">+971 055 208 2041</a>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Ajman, United Arab Emirates</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>Mon – Fri: 9 AM – 6 PM<br>Weekend: Appointment</span>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/profile.php?id=61572071716237" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/3squaresdesigns?igsh=MWdpMm5kN2F3dDc3NA==" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:3squaresid@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">

@@ -4,12 +4,57 @@
 {% block title %}3Squares{% endblock %}
 {% block description %}Learn about 3Squares – a premium interior design and fit-out company crafting extraordinary corporate environments.{% endblock %}
 
+{% block extra_head %}
+    <style>
+        .about-hero-video .title {
+            text-transform: uppercase;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: #ffffff;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .about-hero-video .description {
+            color: #ffffff;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .page-section {
+            background-color: #ffffff;
+        }
+        .section-light {
+            background-color: rgba(255, 255, 255, 0.8) !important;
+        }
+        .description {
+            font-weight: 300;
+            color: #666;
+            letter-spacing: 0.05em;
+        }
+        .subtitle {
+            background: rgba(10, 44, 28, 0.02);
+            font-weight: 800;
+            letter-spacing: 4px;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
-    <!-- Page Hero -->
-    <div class="page-hero">
-        <div class="container">
-            <h1 class="title animate-on-scroll slide-up staggered">About Us</h1>
-            <p class="description animate-on-scroll slide-up staggered">A luxury interior design and fit-out company dedicated to transforming corporate spaces into extraordinary environments.</p>
+    <!-- Video Background Hero -->
+    <div class="page-hero about-hero-video" style="position: relative; overflow: hidden; height: 80vh; display: flex; align-items: center; background: #000;">
+        <video src="{% static 'main/images/WhatsApp Video 2026-04-08 at 10.31.53 AM.mp4' %}" 
+               autoplay muted loop playsinline 
+               style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1;"></video>
+        <!-- Subtle dark overlay to let original colors shine while keeping text readable -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);"></div>
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.15);"></div>
+        
+        <div class="container" style="position: relative; z-index: 2; text-align: center;">
+            <h1 class="title animate-on-scroll slide-up staggered" style="color: #ffffff; font-weight: 300; letter-spacing: 4px;">About Us</h1>
+            <p class="description animate-on-scroll slide-up staggered" style="color: #ffffff; max-width: 700px; margin: 1.5rem auto; font-weight: 400; line-height: 1.8;">
+                A luxury interior design and fit-out company dedicated to transforming corporate spaces into extraordinary environments.
+            </p>
+            <div class="scroll-indicator animate-on-scroll fade-in" style="margin-top: 3rem; color: #ffffff; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px;">
+                Scroll to discover <br>
+                <i class="fas fa-chevron-down mt-2" style="font-size: 0.8rem;"></i>
+            </div>
         </div>
     </div>
 

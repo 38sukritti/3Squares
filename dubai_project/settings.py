@@ -32,7 +32,9 @@ DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 ALLOWED_HOSTS = [
     "3squares.ae",
     "www.3squares.ae",
-    "threesquares.onrender.com"
+    "threesquares.onrender.com",
+    "127.0.0.1",
+    "localhost"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
