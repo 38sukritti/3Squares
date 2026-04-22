@@ -75,7 +75,7 @@
                     <!-- Kitchens -->
                     <a href="{% url 'service_detail' slug='commercial-kitchens' %}" class="service-full-card animate-on-scroll scale-in staggered" style="text-decoration: none; display: block;">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80" alt="Commercial Kitchens">
+                            <img src="{% static 'main/images/commercial_kitchen.png' %}" alt="Commercial Kitchens">
                         </div>
                         <div class="card-body">
                             <span class="card-tag">Commercial</span>
@@ -87,12 +87,24 @@
                     <!-- Booths -->
                     <a href="{% url 'service_detail' slug='event-booths' %}" class="service-full-card animate-on-scroll scale-in staggered" style="text-decoration: none; display: block;">
                         <div class="card-img">
-                            <img src="{% static 'main/images/ChatGPT Image Apr 7, 2026, 02_59_52 PM.png' %}" alt="Booths">
+                            <img src="{% static 'main/images/event_booth_2.png' %}" alt="Booths">
                         </div>
                         <div class="card-body">
                             <span class="card-tag">Exhibition</span>
                             <h3 class="card-title">Event Booths</h3>
                             <p class="card-desc">Eye-catching exhibition and event booths that command attention on the show floor. Custom-built structures that embody your brand with impact.</p>
+                        </div>
+                    </a>
+
+                    <!-- Carts -->
+                    <a href="{% url 'service_detail' slug='carts' %}" class="service-full-card animate-on-scroll scale-in staggered" style="text-decoration: none; display: block;">
+                        <div class="card-img">
+                            <img src="{% static 'main/images/cart4.png' %}" alt="Elegant Carts">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">Retail & Events</span>
+                            <h3 class="card-title">Elegant Carts & Kiosks</h3>
+                            <p class="card-desc">Bespoke mobile retail and hospitality units designed for high-end events. Our carts blend mobility with sophisticated interior design.</p>
                         </div>
                     </a>
 

@@ -46,9 +46,9 @@ def service_detail(request, slug):
                 {'title': 'Fit-out', 'desc': 'Precision construction and finishing with premium materials.'}
             ],
             'gallery': [
-                'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80'
+                '/static/main/images/cooperate_fitout1.png',
+                '/static/main/images/cooperate_fitout2.png',
+                '/static/main/images/custom_furniture1.png'
             ]
         },
         'commercial-projects': {
@@ -70,7 +70,7 @@ def service_detail(request, slug):
             'gallery': [
                 '/static/main/images/commercial_project.png',
                 '/static/main/images/commercial_project_2.png',
-                'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80'
+                '/static/main/images/commercial_project3.png'
             ]
         },
         'coffee-shops': {
@@ -90,8 +90,8 @@ def service_detail(request, slug):
                 {'title': 'Launch', 'desc': 'A finished space ready for opening day.'}
             ],
             'gallery': [
-                'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80',
+                '/static/main/images/coffee_shop.png',
+                '/static/main/images/coffee_shop2.png',
                 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80'
             ]
         },
@@ -113,14 +113,14 @@ def service_detail(request, slug):
             ],
             'gallery': [
                 '/static/main/images/commercial_kitchen.png',
-                'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80',
-                '/static/main/images/commercial_kitchen_3.png'
+                '/static/main/images/commercial_kitchen_3.png',
+                '/static/main/images/commercial_kitchen_2.png'
             ]
         },
         'event-booths': {
             'title': 'Event Booths',
             'tag': 'Exhibition',
-            'hero_image': 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=80',
+            'hero_image': '/static/main/images/event_booth_2.png',
             'description': 'Show-stopping exhibition stands that capture attention from across the floor. Designed for high impact and quick assembly.',
             'details': [
                 'Custom modular booth designs for global exhibitions.',
@@ -134,9 +134,31 @@ def service_detail(request, slug):
                 {'title': 'Live', 'desc': 'Handover at the exhibition venue.'}
             ],
             'gallery': [
-                '/static/main/images/event_booth_1.png',
+                '/static/main/images/event1.png',
                 '/static/main/images/event_booth_2.png',
-                '/static/main/images/event_booth_3.png'
+                '/static/main/images/event3.png'
+            ]
+        },
+        'carts': {
+            'title': 'Elegant Carts & Kiosks',
+            'tag': 'Retail & Events',
+            'hero_image': '/static/main/images/cart4.png',
+            'description': 'Bespoke mobile retail and hospitality units designed for high-end events and commercial spaces. Our carts blend mobility with sophisticated interior design.',
+            'details': [
+                'Custom-built mobile units for luxury brands.',
+                'Premium finishes: marble, wood, and brass.',
+                'Integrated lighting and functional storage.',
+                'Modular designs for easy setup and mobility.'
+            ],
+            'process': [
+                {'title': 'Design', 'desc': 'Creating a mobile unit that fits your brand.'},
+                {'title': 'Craft', 'desc': 'Precision fabrication with high-quality materials.'},
+                {'title': 'Deploy', 'desc': 'Ready for your next high-end event.'}
+            ],
+            'gallery': [
+                '/static/main/images/cart1.png',
+                '/static/main/images/cart2.png',
+                '/static/main/images/cart3.png'
             ]
         },
         'meeting-areas': {
@@ -156,9 +178,9 @@ def service_detail(request, slug):
                 {'title': 'Furniture', 'desc': 'Custom tables and premium ergonomic seating.'}
             ],
             'gallery': [
-                'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&q=80'
+                '/static/main/images/meeting_area_new_1.png',
+                'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80',
+                '/static/main/images/meeting_area_new_2.png'
             ]
         },
         'custom-furniture': {
@@ -178,7 +200,7 @@ def service_detail(request, slug):
                 {'title': 'Polish', 'desc': 'Final finishing and protective treatments.'}
             ],
             'gallery': [
-                '/static/main/images/custom_furniture1.png',
+                '/static/main/images/custom_furniture3.png',
                 '/static/main/images/customer_furniture2.png',
                 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=800&q=80'
             ]
