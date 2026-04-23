@@ -77,19 +77,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }, stepTime);
     }
 
-    /* === HEADER SCROLL SHRINK === */
-    window.addEventListener('scroll', () => {
-        if (header) {
-            if (window.scrollY > 100) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
+    /* === HEADER SCROLL BEHAVIOR === */
+    const updateHeader = () => {
+        if (!header) return;
+        
+        // Detect if we are on a page with a hero that needs transparency
+        const hasHero = document.querySelector('.about-hero-video') || 
+                        document.querySelector('.hero-banner') || 
+                        document.querySelector('.page-hero') ||
+                        document.querySelector('.service-hero');
+
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+            // When scrolled down over content (usually light), use a DARK navbar for contrast
+            header.style.background = 'rgba(10, 44, 28, 0.98)'; // Deep brand green
+            header.style.backdropFilter = 'blur(15px)';
+            header.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+            
+            header.querySelectorAll('.nav-links a').forEach(a => {
+                a.style.color = 'rgba(255,255,255,0.8)';
+                if (a.classList.contains('active')) a.style.color = '#ffffff';
+            });
+            
+            const logoImg = header.querySelector('.logo-icon-img');
+            if (logoImg) logoImg.style.filter = 'brightness(0) invert(1)';
+            
+        } else {
+            header.classList.remove('scrolled');
+            if (hasHero) {
+                // On Hero (transparent mode)
+                header.style.background = 'rgba(255,255,255,0.1)';
+                header.style.backdropFilter = 'blur(10px)';
+                header.style.borderBottom = '1px solid rgba(255,255,255,0.2)';
+                header.querySelectorAll('.nav-links a').forEach(a => {
+                    a.style.color = a.classList.contains('active') ? '#ffffff' : 'rgba(255,255,255,0.7)';
+                });
+                const logoImg = header.querySelector('.logo-icon-img');
+                if (logoImg) logoImg.style.filter = 'brightness(0) invert(1)';
+            } else {
+                // Regular light header at top (if no hero)
+                header.style.background = 'rgba(255,255,255,0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+                header.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+                header.querySelectorAll('.nav-links a').forEach(a => {
+                    a.style.color = ''; // Use default CSS
+                });
+                const logoImg = header.querySelector('.logo-icon-img');
+                if (logoImg) logoImg.style.filter = '';
+            }
         }
+        
         // Scroll progress bar
         const winScroll = document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
         const progressBar = document.querySelector('.scroll-progress-bar');
         if (progressBar) progressBar.style.height = scrolled + '%';
-    });
+    };
+
+    window.addEventListener('scroll', updateHeader);
+    updateHeader(); // Initial load check
 
     /* === MAGNETIC BUTTONS === */
     document.querySelectorAll('.magnetic-btn').forEach(btn => {

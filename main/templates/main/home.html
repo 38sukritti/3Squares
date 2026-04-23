@@ -286,26 +286,4 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script>
-        // Header goes transparent on hero, then solid on scroll
-        const header = document.querySelector('.header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255,255,255,0.9)';
-                header.style.borderBottom = '1px solid rgba(0,0,0,0.08)';
-                header.querySelectorAll('.nav-links a').forEach(a => { 
-                    a.style.color = ''; 
-                    if (a.classList.contains('active')) a.style.color = 'var(--accent-green)';
-                });
-                header.querySelector('.logo-icon-img').style.filter = '';
-            } else {
-                header.style.background = 'rgba(255,255,255,0.15)';
-                header.style.borderBottom = '1px solid rgba(255,255,255,0.2)';
-                header.querySelectorAll('.nav-links a').forEach(a => {
-                    a.style.color = a.classList.contains('active') ? '#fff' : 'rgba(255,255,255,0.8)';
-                });
-                header.querySelector('.logo-icon-img').style.filter = 'brightness(0) invert(1)';
-            }
-        });
-    </script>
 {% endblock %}
