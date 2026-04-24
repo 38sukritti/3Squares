@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* === SPLASH SCREEN === */
@@ -22,22 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (header) header.style.opacity = '1';
     }
 
-    /* === CUSTOM CURSOR === */
-    const cursor = document.querySelector('.custom-cursor');
-    document.addEventListener('mousemove', (e) => {
-        if (cursor) { 
-            cursor.style.left = e.clientX + 'px'; 
-            cursor.style.top = e.clientY + 'px'; 
-            
-            // Fix for visibility on dark backgrounds
-            const isDark = e.target.closest('.footer') || e.target.closest('.service-hero') || e.target.closest('.page-hero');
-            if (isDark) {
-                cursor.classList.add('cursor-light');
-            } else {
-                cursor.classList.remove('cursor-light');
-            }
-        }
-    });
+
 
     /* === SCROLL ANIMATIONS === */
     const scrollObserver = new IntersectionObserver((entries) => {

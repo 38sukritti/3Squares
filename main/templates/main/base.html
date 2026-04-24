@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}3Squares{% endblock %}</title>
     <meta name="description" content="{% block description %}Premium interior design and fit-out services for corporate environments.{% endblock %}">
-    <link rel="stylesheet" href="{% static 'main/shared.css' %}">
+    <link rel="stylesheet" href="{% static 'main/shared.css' %}?v=3">
     <link rel="icon" type="image/png" href="{% static 'main/images/favicon.png' %}?v=2">
     <link rel="shortcut icon" type="image/png" href="{% static 'main/images/favicon.png' %}?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,8 +16,6 @@
 
     <div class="grid-background"></div>
     <div class="scroll-progress-container"><div class="scroll-progress-bar"></div></div>
-    <div class="custom-cursor"></div>
-    <div class="custom-cursor-follower"></div>
 
     <header class="header glass-header reveal-down">
         <nav class="navbar container">
@@ -92,7 +90,7 @@
         </div>
     </footer>
 
-    <script src="{% static 'main/shared.js' %}"></script>
+    <script src="{% static 'main/shared.js' %}?v=3"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

@@ -24,7 +24,10 @@
 {% block content %}
     <!-- Page Hero -->
     <div class="page-hero">
-        <div class="container">
+        <div class="page-hero-video-bg">
+            <video autoplay loop muted playsinline src="{% static 'main/images/3sq_service.mp4' %}"></video>
+        </div>
+        <div class="container" style="position: relative; z-index: 2;">
             <h2 class="subtitle animate-on-scroll slide-up">Our Expertise</h2>
             <h1 class="title animate-on-scroll slide-up staggered">Services &amp; Products</h1>
             <p class="description animate-on-scroll slide-up staggered">Corporate fitouts, coffee shops, kitchens, booths, meeting areas &amp; furniture — built for business, not houses.</p>

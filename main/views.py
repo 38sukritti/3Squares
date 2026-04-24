@@ -5,9 +5,16 @@ from django.core.mail import EmailMultiAlternatives
 from email.mime.image import MIMEImage
 from django.contrib import messages
 from django.conf import settings
+from django.http import HttpResponse
 from .models import Inquiry
 
 logger = logging.getLogger(__name__)
+
+
+def ping(request):
+    """Lightweight health-check endpoint for uptime monitoring."""
+    return HttpResponse("OK")
+
 
 def index(request):
     return render(request, 'main/index.html')

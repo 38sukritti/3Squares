@@ -17,7 +17,7 @@
             border-radius: 14px; 
             overflow: hidden; 
             position: relative; 
-            cursor: none; 
+            cursor: pointer; 
             height: 100%;
             visibility: hidden; /* Hidden until JS sets spans */
         }
@@ -70,7 +70,10 @@
 {% block content %}
     <!-- Page Hero -->
     <div class="page-hero">
-        <div class="container">
+        <div class="page-hero-video-bg">
+            <video autoplay loop muted playsinline src="{% static 'main/images/3Sq_portfolio.mp4' %}"></video>
+        </div>
+        <div class="container" style="position: relative; z-index: 2;">
             <h2 class="subtitle animate-on-scroll slide-up">Our Work</h2>
             <h1 class="title animate-on-scroll slide-up staggered">Transformative Design<br>Projects</h1>
             <p class="description animate-on-scroll slide-up staggered">Explore our collection of corporate fitouts, coffee shops, kitchens, booths, and custom spaces.</p>
